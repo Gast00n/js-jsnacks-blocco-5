@@ -16,35 +16,31 @@ $(document).ready( function() {
   * 
   */
 
-  var bicicles = [{nome: 'bolt', peso: 25, colore: 'rosso'}, {nome: 'mountainview', peso: 45, colore: 'nero'}, {nome: 'feather', peso: 15, colore: 'giallo'}];
-  var biciLeggera = {nome: '', peso: 0};
+//   var bicicles = [{nome: 'bolt', peso: 25, colore: 'rosso'}, {nome: 'mountainview', peso: 45, colore: 'nero'}, {nome: 'feather', peso: 15, colore: 'giallo'}];
+//   var biciLeggera = {nome: '', peso: 0};
 
-  for (var key in bicicles) {
-    if (biciLeggera.peso == 0) {
-        biciLeggera.peso = bicicles[key].peso;
-    } else if (biciLeggera.peso > bicicles[key].peso) {
-        biciLeggera.peso = bicicles[key].peso;
-        biciLeggera.nome = bicicles[key].nome;
-    }
+//   for (var key in bicicles) {
+//     if (biciLeggera.peso == 0) {
+//         biciLeggera.peso = bicicles[key].peso;
+//     } else if (biciLeggera.peso > bicicles[key].peso) {
+//         biciLeggera.peso = bicicles[key].peso;
+//         biciLeggera.nome = bicicles[key].nome;
+//     }
 
-  }
+//   }
 
-  var source = $('#entry-template').html();
-  var template = Handlebars.compile(source);
-  var code = $('.content');
+//   var source = $('#entry-template').html();
+//   var template = Handlebars.compile(source);
+//   var code = $('.content');
 
-  var data = {
-      title: 'Bici più leggera nel DB',
-      nome: biciLeggera.nome,
-      peso: biciLeggera.peso,
-  }
+//   var data = {
+//       title: 'Bici più leggera nel DB',
+//       nome: biciLeggera.nome,
+//       peso: biciLeggera.peso,
+//   }
 
-  var html = template(data);
-  code.append(html);
-
-
-
-
+//   var html = template(data);
+//   code.append(html);
 
  /**
   * 
@@ -57,6 +53,25 @@ $(document).ready( function() {
   * 
   */
 
+  var names = ['Franco', 'Luigi', 'Filippo', 'Alessandro', 'Adele', 'Alessia'];
+  var arrayVal = names.length - 1;
+  var min = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+  while (isNaN(min) || min < 1 || min > arrayVal) {
+    min = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+  }
+  var max = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+  while (isNaN(max) || max < min || max > arrayVal) {
+    max = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+  }
+  
+  var newNames = [];
+  for ( var i = 0; i < names.length; i++) {
+    if( min <= i && max >= i) {
+      newNames.push(names[i]);
+    }
+  }
+
+  alert('I nomi selezionati nel range tra ' + min + ' e ' + max + ' sono:\n ' + newNames);
 
 
  /**
