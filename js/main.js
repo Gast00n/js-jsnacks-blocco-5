@@ -53,25 +53,25 @@ $(document).ready( function() {
   * 
   */
 
-  var names = ['Franco', 'Luigi', 'Filippo', 'Alessandro', 'Adele', 'Alessia'];
-  var arrayVal = names.length - 1;
-  var min = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
-  while (isNaN(min) || min < 1 || min > arrayVal) {
-    min = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
-  }
-  var max = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
-  while (isNaN(max) || max < min || max > arrayVal) {
-    max = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
-  }
+  // var names = ['Franco', 'Luigi', 'Filippo', 'Alessandro', 'Adele', 'Alessia'];
+  // var arrayVal = names.length - 1;
+  // var min = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+  // while (isNaN(min) || min < 1 || min > arrayVal) {
+  //   min = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+  // }
+  // var max = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+  // while (isNaN(max) || max < min || max > arrayVal) {
+  //   max = parseInt( prompt('Inserisci un valore da 1 a ' + arrayVal) );
+  // }
   
-  var newNames = [];
-  for ( var i = 0; i < names.length; i++) {
-    if( min <= i && max >= i) {
-      newNames.push(names[i]);
-    }
-  }
+  // var newNames = [];
+  // for ( var i = 0; i < names.length; i++) {
+  //   if( min <= i && max >= i) {
+  //     newNames.push(names[i]);
+  //   }
+  // }
 
-  alert('I nomi selezionati nel range tra ' + min + ' e ' + max + ' sono:\n ' + newNames);
+  // alert('I nomi selezionati nel range tra ' + min + ' e ' + max + ' sono:\n ' + newNames);
 
 
  /**
@@ -84,5 +84,37 @@ $(document).ready( function() {
   * 
   */
 
+  var condominio = [
+    {famiglia: 'Rossi', componenti: 4},
+    {famiglia: 'Verdi', componenti: 2},
+    {famiglia: 'Bianchi', componenti: 4},
+    {famiglia: 'Gialli', componenti: 8}
+  ]
+  var condscala = [];
+  
+  for (var i = 0; i < condominio.length; i++) {
+    var scala = {
+      famiglia: condominio[i].famiglia,
+      componenti: condominio[i].componenti,
+      scala: generateScala()
+    }
+    condscala.push(scala);
+  }
+
+  console.table(condominio);
+  console.table(condscala);
+
+  //Function Scala
+
+  function generateScala() {
+    var scale = 'abc';
+    var scala = scale[randScala(0, scale.length - 1)];
+
+    return scala;
+  }
+
+  function randScala(min,max) {
+    return Math.floor (Math.random() * max - min + 1 ) + min;
+  }
 
 });
